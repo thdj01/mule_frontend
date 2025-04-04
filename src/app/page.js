@@ -10,10 +10,14 @@ export default function Home() {
   const [isStreamOn, setIsStreamOn] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const [isFollowActive, setIsFollowActive] = useState(false);
+  const [isPowerActive, setIsPowerActive] = useState(false);
 
 
   const toggleIcon = () => {
     setIsActive(!isActive);
+  };
+  const togglePowerIcon = () => {
+    setIsPowerActive(!isPowerActive);
   };
   const toggleFollowmeIcon = () => {
     setIsFollowActive(!isFollowActive);
@@ -52,16 +56,17 @@ export default function Home() {
             
             {/* Power button */}
             <div className="flex items-center justify-center w-15 h-15 rounded-full bg-gray-200 cursor-pointer"
-              onClick={toggleStream}
+              onClick={togglePowerIcon}
             >
               <img className={`flex items-center justify-center }`} 
-               src={'/frame.svg'}></img>
+                src={isPowerActive ? '/poweroff.svg' : '/poweron.svg' }></img>
             </div>
             
             {/* Speed button */}
             <div onClick={toggleIcon} className="flex items-center justify-center w-15 h-15 rounded-full bg-gray-200 cursor-pointer">
             <img className={`flex items-center justify-center}`} 
-               src={isActive ? '/fast-mode.svg' : '/slow-mode-svgrepo-com.svg'}>
+               src={isActive ? '/fast-mode.svg' : '/fast-mode.svg' } width={'80%'}>
+               
             </img>
             </div>
           </div>
@@ -70,7 +75,7 @@ export default function Home() {
             {/* Vehicle and person detection icon */}
             <div onClick={toggleFollowmeIcon} className="flex space-x-2">
             <img className={`flex items-center justify-center i}`}
-               src={isFollowActive ? '/followon.svg' : '/followoff.svg'}>
+               src={isFollowActive ? '/followon.svg' : '/followoff.svg'} >
             </img>
             </div>
           </div>
